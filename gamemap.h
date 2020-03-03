@@ -12,8 +12,8 @@ public:
     ~GameMap();
 
     GameObject* at(unsigned int xx, unsigned int yy);
-    void set(GameObject* object, unsigned int xx, unsigned int yy);
-    void print();
+    void replace(GameObject* object, unsigned int xx, unsigned int yy);
+    QString print();
     void update();
 
 private:

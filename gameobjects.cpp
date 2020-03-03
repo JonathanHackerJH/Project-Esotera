@@ -1,5 +1,4 @@
 #include "gameobjects.h"
-#include "gamemap.h"
 
 //Constructor for GameObject ------------------------------------ Game Object
 GameObject::GameObject()
@@ -10,7 +9,7 @@ GameObject::GameObject()
 // Destructor for GameObject
 GameObject::~GameObject()
 {
-
+    destroy();
 }
 
 // Public Method -- Runs destroy event for GameObject
@@ -79,19 +78,14 @@ Entity::Entity()
 {
     _name = "Generic Entity";
     _type = "untyped";
-}
-
-// Destructor for Entity
-Entity::~Entity()
-{
-    delete _health;
+    _health = 1.0;
 }
 
 // Public Method -- Causes the entity to take damage
 void Entity::takeDamage(const double amount)
 {
-    *_health -= amount;
-    if (*_health <= 0.0)
+    _health -= amount;
+    if (_health <= 0.0)
     {
         // Destroy if health is reduced to zero
         destroy();
@@ -99,7 +93,7 @@ void Entity::takeDamage(const double amount)
 }
 
 // Entity Getters/Setters
-double* Entity::health()
+double Entity::health()
 {
     return _health;
 }
@@ -111,12 +105,6 @@ Enemy::Enemy()
     _type = "enemy";
 }
 
-// Destructor for Enemy
-Enemy::~Enemy()
-{
-    delete _damage;
-}
-
 // Public Method -- Runs the collide event with Enemy
 void Enemy::collide(GameObject* other)
 {
@@ -125,7 +113,7 @@ void Enemy::collide(GameObject* other)
     // Deal damage to the player
     if (other->type() == "player")
     {
-        other->takeDamage(*_damage);
+        other->takeDamage(_damage);
     }
 }
 

@@ -42,14 +42,13 @@ class Entity : public GameObject
 {
 public:
     Entity();
-    ~Entity();
 
     void takeDamage(const double amount);
 
-    double* health();
+    double health();
 
 protected:
-    double* _health = new double(0.0);
+    double _health;
 };
 
 // Class declaration for Enemy
@@ -58,12 +57,11 @@ class Enemy : public Entity
 {
 public:
     Enemy();
-    ~Enemy();
 
     void collide(GameObject* other);
 
 protected:
-    double* _damage = new double(1.0);
+    double _damage;
 };
 
 #endif // GAMEOBJECTS_H

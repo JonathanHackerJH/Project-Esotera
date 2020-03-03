@@ -13,7 +13,7 @@ public:
     void collide(GameObject* other);
 
 protected:
-    double* _damage = new double(1.0);
+    double _damage;
 };
 
 #endif // PLAYER_H

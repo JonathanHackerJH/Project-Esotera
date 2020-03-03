@@ -39,42 +39,49 @@ GameObject* GameMap::at(unsigned int xx, unsigned int yy)
 }
 
 // Public Method -- Sets a position within the GameMap
-void GameMap::set(GameObject* object, unsigned int xx, unsigned int yy)
+void GameMap::replace(GameObject* object, unsigned int xx, unsigned int yy)
 {
     // Canceling if it is impossible to set object at that position.
     if (xx >= _width || yy >= _height)
     {
-        qDebug() << "Deleted " << object->print() << " object within GameMap::set(). [Error]";
-        delete object; // Delete the provided object (as it could not be placed). To avoid memory leak.
         return;
     }
 
+    // Deleting any object which is already in the map.
+    if (at(xx, yy) != nullptr)
+    {
+        delete at(xx, yy);
+    }
+
+    // Set that position of the map to the new object.
     _map.at(xx + (_width * yy)) = object;
 }
 
 // Public Method -- Prints to cout the contents of the GameMap.
 // Intended for testing purposes mainly.
-void GameMap::print()
-{
+QString GameMap::print()
+{    
     // Iterates through the grid, and prints the symbol for each GameObject.
+    QString text = "";
     GameObject* temp;
     for (unsigned int yy = 0; yy < _height; yy++)
     {
-        std::cout << '[';
+        text += '[';
         for (unsigned int xx = 0; xx < _width; xx++)
         {
             temp = at(xx, yy);
             if (temp != nullptr)
             {
-                std::cout << temp->print();
+                text += temp->print();
             }
             else // Returns a filler space for a place with no GameObject.
             {
-                std::cout << ' ';
+                text += ' ';
             }
         }
-        std::cout << "]\n";
+        text += "]\n";
     }
+    return text;
 }
 
 // Public Method -- Executes the update method on all contained GameObjects.

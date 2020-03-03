@@ -1,11 +1,13 @@
 #include "player.h"
 
-// Public Constructor
+// Constructor for Player
 Player::Player()
 {
     _name = "Player";
     _type = "player";
     _symbol = 'A';
+
+    _damage = 1.0;
 }
 
 // Public Method -- Runs update event.
@@ -19,6 +21,6 @@ void Player::collide(GameObject* other)
 {
     if (other->type() == "enemy")
     {
-        other->takeDamage(*_damage);
+        other->takeDamage(_damage);
     }
 }
