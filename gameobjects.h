@@ -13,7 +13,7 @@ class GameObject
 {
 public:
     GameObject();
-    ~GameObject();
+    virtual ~GameObject();
     char print();
 
     void destroy();

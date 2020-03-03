@@ -4,7 +4,7 @@
 Player::Player()
 {
     _name = "Player";
-    _type = "enemy";
+    _type = "player";
     _symbol = 'A';
 }
 
@@ -17,5 +17,8 @@ void Player::update()
 // Public Method -- Runs collide event.
 void Player::collide(GameObject* other)
 {
-
+    if (other->type() == "enemy")
+    {
+        other->takeDamage(*_damage);
+    }
 }

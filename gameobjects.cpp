@@ -1,4 +1,5 @@
 #include "gameobjects.h"
+#include "gamemap.h"
 
 //Constructor for GameObject ------------------------------------ Game Object
 GameObject::GameObject()
@@ -33,20 +34,29 @@ char GameObject::print()
 // Public Method -- Runs the move function for GameObject
 void GameObject::move(const int xoff, const int yoff)
 {
-    //Get "other" based on
-    // _x + xoff, _y + yoff
-    //and deal with accordingly.
+    // Get the GameObject at the position it attempts to move to.
+    unsigned int gox = xx() + xoff;
+    unsigned int goy = yy() + yoff;
+    //GameObject* other = mainMap.at(gox, goy);
 
     GameObject* other = nullptr;
-    collide(other);
+
+    // Execute mutual collision events.
+    if (other != nullptr)
+    {
+        collide(other);
+    }
     if (other != nullptr)
     {
         other->collide(this);
     }
     else
     {
-        //Space is free
-        //Execute movement action
+        // If there is no object, move this object to that position.
+        //mainMap.set(this, gox, goy);
+        //mainMap.set(nullptr, xx(), yy());
+        _x = gox;
+        _y = goy;
     }
 }
 

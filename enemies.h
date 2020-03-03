@@ -1,7 +1,7 @@
-#include "gameobjects.h"
-
 #ifndef ENEMIES_H
 #define ENEMIES_H
+
+#include "gameobjects.h"
 
 // Class declaration for Enemy
 class Goblin : public Enemy //Number One
