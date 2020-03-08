@@ -2,6 +2,8 @@
 #include "ui_mainwindow.h"
 #include "qdebug.h"
 
+double globalTest = 0.0;
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)

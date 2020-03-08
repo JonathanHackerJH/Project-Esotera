@@ -1,4 +1,6 @@
 #include "gameobjects.h"
+#include "gamemap.h"
+#include "qdebug.h"
 
 //Constructor for GameObject ------------------------------------ Game Object
 GameObject::GameObject()
@@ -36,9 +38,13 @@ void GameObject::move(const int xoff, const int yoff)
     // Get the GameObject at the position it attempts to move to.
     unsigned int gox = xx() + xoff;
     unsigned int goy = yy() + yoff;
-    //GameObject* other = mainMap.at(gox, goy);
 
-    GameObject* other = nullptr;
+    // Cancel if the target position is out of bounds.
+    if (gox >= _map->_width || goy >= _map->_height)
+    {
+        return;
+    }
+    GameObject* other = _map->at(gox, goy);
 
     // Execute mutual collision events.
     if (other != nullptr)
@@ -52,10 +58,8 @@ void GameObject::move(const int xoff, const int yoff)
     else
     {
         // If there is no object, move this object to that position.
-        //mainMap.set(this, gox, goy);
-        //mainMap.set(nullptr, xx(), yy());
-        _x = gox;
-        _y = goy;
+        _map->replace(nullptr, xx(), yy());
+        _map->replace(this, gox, goy);
     }
 }
 

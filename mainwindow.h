@@ -20,8 +20,8 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-    Player* mainPlayer = new Player();
     GameMap* mainMap = new GameMap(5, 5);
+    Player* mainPlayer = new Player();
 
 private:
     Ui::MainWindow *ui;

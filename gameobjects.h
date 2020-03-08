@@ -3,6 +3,8 @@
 
 #include <QString>
 
+class GameMap;
+
 // This file contains the GameObject hierarchy. (Parent classes).
 // These classes will never be intantiated into the GameMap.
 // Proper game objects contained in sub files.
@@ -33,6 +35,9 @@ protected:
     char _symbol = '!';
     unsigned int _x;
     unsigned int _y;
+    GameMap* _map;
+
+    friend class GameMap;
 };
 
 // Class declaration for Entity

@@ -39,6 +39,7 @@ GameObject* GameMap::at(unsigned int xx, unsigned int yy)
 }
 
 // Public Method -- Sets a position within the GameMap
+// Note that replace does update the _x and _y values of GameObject
 void GameMap::replace(GameObject* object, unsigned int xx, unsigned int yy)
 {
     // Canceling if it is impossible to set object at that position.
@@ -54,6 +55,13 @@ void GameMap::replace(GameObject* object, unsigned int xx, unsigned int yy)
     }
 
     // Set that position of the map to the new object.
+    if (object != nullptr)
+    {
+        object->_x = xx;
+        object->_y = yy;
+        object->_map = this;
+    }
+
     _map.at(xx + (_width * yy)) = object;
 }
 
