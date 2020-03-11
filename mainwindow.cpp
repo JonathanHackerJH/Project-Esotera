@@ -1,8 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "qdebug.h"
 
-double globalTest = 0.0;
+#include "gamemap.h"
+#include "qdebug.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -10,15 +10,24 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    // Set some test values in the map.
-    mainMap->replace(new Goblin, 2, 3);
-    mainMap->replace(mainPlayer, 4, 4);
+    // Declaring mainMap and mainPlayer.
+    GameMap mainMap = GameMap(5, 5);
+    GameObject* mainPlayer = mainMap.create<Player>(0, 0, true);
+    mainMap.create<Goblin>(1, 1);
+    mainMap.create<Spike>(1, 0);
+    qDebug().noquote() << mainMap.print();
 
-    // Debug display the map.
-    qDebug().noquote() << mainMap->print();
+    mainPlayer->move(1, 0);
+    qDebug().noquote() << mainMap.print();
 
-    mainPlayer->move(0, -1);
-    qDebug().noquote() << mainMap->print();
+    mainPlayer->move(0, 1);
+    qDebug().noquote() << mainMap.print();
+
+    mainPlayer->move(0, 1);
+    qDebug().noquote() << mainMap.print();
+
+    mainPlayer->move(0, 1);
+    qDebug().noquote() << mainMap.print();
 }
 
 MainWindow::~MainWindow()

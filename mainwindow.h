@@ -3,11 +3,6 @@
 
 #include <QMainWindow>
 
-#include "gamemap.h"
-#include "gameobjects.h"
-#include "player.h"
-#include "enemies.h"
-
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -20,11 +15,7 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-    GameMap* mainMap = new GameMap(5, 5);
-    Player* mainPlayer = new Player();
-
 private:
     Ui::MainWindow *ui;
 };
-
 #endif // MAINWINDOW_H
