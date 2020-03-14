@@ -35,6 +35,7 @@ public:
 
     // Virtual Getters/Setters.
     virtual double health() const;
+    virtual double armor() const;
 
 protected:
     // Basic Variable Members.
@@ -85,10 +86,13 @@ class Entity : public GameObject
 public:
     Entity();
     double health() const;
+    double armor() const;
+
     virtual void takeDamage(double amount);
 
 protected:
     double _health;
+    double _armor;
 };
 
 // Parent class for all Enemies. The class should not be instantiated.

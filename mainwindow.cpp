@@ -17,10 +17,10 @@ MainWindow::MainWindow(QWidget *parent)
     // Declaring mainMap and mainPlayer.
     GameMap mainMap = GameMap(5, 5);
     GameObject* mainPlayer = mainMap.create<Player>(0, 0, true);
-    //mainMap.create<Goblin>(1, 1);
+    mainMap.create<Goblin>(1, 1);
     //mainMap.create<Spike>(1, 0);
-    mainMap.create<Tombstone>(1,0);
-    mainMap.create<Wall>(1, 1);
+    //mainMap.create<Tombstone>(1,0);
+    //mainMap.create<Wall>(1, 1);
     qDebug().noquote() << mainMap.print();
 
     mainPlayer->move(1, 0);
