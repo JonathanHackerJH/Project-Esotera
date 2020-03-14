@@ -70,6 +70,14 @@ public:
     virtual void collide(GameObject *other);
 };
 
+// Class declaration for tombstone
+class Tombstone : public GameObject
+{
+public:
+    Tombstone();
+    virtual void collide(GameObject *other);
+};
+
 // Parent class for all Entities. This class should not be intantiated.
 // This includes any GameObject which has health and should take damage.
 class Entity : public GameObject

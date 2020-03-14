@@ -135,6 +135,27 @@ void Wall::collide(GameObject *other)
         qDebug() << "I am a wall. You shall not pass!";
     }
 }
+
+// --------------------------------------------------- Tombstone
+// Constructor for Tombstone class
+Tombstone::Tombstone()
+{
+    _name = "Tombstone";
+    _type = "Tombstone";
+    _symbol = 'T';
+}
+
+void Tombstone::collide(GameObject *other)
+{
+    if (other->type() == "player")
+    {
+        qDebug() << "\"When you look at the dark side, careful you must be.\n"
+                    "For the dark side looks back.\"\n                               -Yoda";
+
+        destroy();
+        map()->destroy(this);
+    }
+}
 // --------------------------------------------------- Entity
 
 // Constructor for Entity class.
