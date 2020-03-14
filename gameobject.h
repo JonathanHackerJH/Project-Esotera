@@ -62,6 +62,14 @@ protected:
     double _damage;
 };
 
+// Class declaration for wall
+class Wall : public GameObject
+{
+public:
+    Wall();
+    virtual void collide(GameObject *other);
+};
+
 // Parent class for all Entities. This class should not be intantiated.
 // This includes any GameObject which has health and should take damage.
 class Entity : public GameObject

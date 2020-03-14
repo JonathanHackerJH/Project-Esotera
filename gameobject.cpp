@@ -119,6 +119,22 @@ void Spike::collide(GameObject* other)
     }
 }
 
+// --------------------------------------------------- Wall
+// Constructor for Wall class
+Wall::Wall()
+{
+    _name = "Wall";
+    _type = "Wall";
+    _symbol = '|';
+}
+
+void Wall::collide(GameObject *other)
+{
+    if (other->type() == "player")
+    {
+        qDebug() << "I am a wall. You shall not pass!";
+    }
+}
 // --------------------------------------------------- Entity
 
 // Constructor for Entity class.
