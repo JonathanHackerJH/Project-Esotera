@@ -198,10 +198,22 @@ void Enemy::destroy()
 Goblin::Goblin()
 {
     _name = "Goblin";
-    _symbol = 'G';
+    _symbol = 'g';
 
     _health = 2.0;
     _damage = 1.0;
+}
+
+// --------------------------------------------------- Goblin Boss
+
+// Constructor for GoblinBoss Enemy class.
+GoblinBoss::GoblinBoss()
+{
+    _name = "Goblin Boss";
+    _symbol = 'G';
+
+    _health = 3.0;
+    _damage = 2.5;
 }
 
 // --------------------------------------------------- Player

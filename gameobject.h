@@ -105,6 +105,13 @@ public:
     Goblin();
 };
 
+// Class declaration for Goblin Boss
+class GoblinBoss : public Enemy
+{
+public:
+    GoblinBoss();
+};
+
 // Class declaration for Player.
 class Player : public Entity
 {
