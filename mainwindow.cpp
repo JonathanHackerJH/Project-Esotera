@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "rand_functions.h"
 
 #include "gamemap.h"
 #include "qdebug.h"
@@ -9,6 +10,9 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    // Sets a random seed for randomization to have different outputs.
+    randomize();
 
     // Declaring mainMap and mainPlayer.
     GameMap mainMap = GameMap(5, 5);

@@ -19,12 +19,14 @@ SOURCES += \
     gamemap.cpp \
     gameobject.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    rand_functions.cpp
 
 HEADERS += \
     gamemap.h \
     gameobject.h \
-    mainwindow.h
+    mainwindow.h \
+    rand_functions.h
 
 FORMS += \
     mainwindow.ui
