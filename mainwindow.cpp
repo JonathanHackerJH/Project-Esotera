@@ -25,7 +25,7 @@ MainWindow::MainWindow(QWidget *parent)
     // Declaring a spike, tombstone and wall for unit testing
     mainMap.create<Spike>(1, 0);
     mainMap.create<Tombstone>(3,0);
-    mainMap.create<Wall>(1, 3);
+    mainMap.create<Wall>(4, 0);
 
     // Initial game state for unit testing
     qDebug().noquote() << mainMap.print();
@@ -43,6 +43,13 @@ MainWindow::MainWindow(QWidget *parent)
 
     // Unit test for player landing on tombstone
     mainPlayer->move(2, 0);
+    qDebug().noquote() << mainMap.print();
+    qDebug() << "HEALTH = " << mainPlayer->health();
+    qDebug() << "ARMOR = " << mainPlayer->armor();
+    qDebug() << "--------------------------------------------------";
+
+    // Unit test for player running into a wall
+    mainPlayer->move(1, 0);
     qDebug().noquote() << mainMap.print();
     qDebug() << "HEALTH = " << mainPlayer->health();
     qDebug() << "ARMOR = " << mainPlayer->armor();
@@ -91,6 +98,8 @@ MainWindow::MainWindow(QWidget *parent)
 
 
     // Unit test: Loop game until player is dead moving the game objects with randomized input
+    // ****TODO IF WE SETUP GAME SIMILAR TO THIS****:
+        //Make turns that dont result in a change skipped and re roll movement of objects other than mainPlayer
     while(mainPlayer->health() != 0.0)
     {
         mainPlayer->move(irandom(5), irandom(5));
