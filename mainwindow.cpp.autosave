@@ -91,6 +91,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 
     // Unit test: Loop game until player is dead moving the game objects with randomized input
+    // TODO: Make turns that 
     while(mainPlayer->health() != 0.0)
     {
         mainPlayer->move(irandom(5), irandom(5));
