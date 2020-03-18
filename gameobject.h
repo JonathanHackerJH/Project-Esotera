@@ -36,6 +36,7 @@ public:
     // Virtual Getters/Setters.
     virtual double health() const;
     virtual double armor() const;
+    virtual void healthBuff(int x);
 
 protected:
     // Basic Variable Members.
@@ -79,6 +80,14 @@ public:
     virtual void collide(GameObject *other);
 };
 
+// Class declaration for health potion
+class HealthPotion : public GameObject
+{
+public:
+    HealthPotion();
+    virtual void collide(GameObject *other);
+};
+
 // Parent class for all Entities. This class should not be intantiated.
 // This includes any GameObject which has health and should take damage.
 class Entity : public GameObject
@@ -87,6 +96,7 @@ public:
     Entity();
     double health() const;
     double armor() const;
+    void healthBuff(int x);
 
     virtual void takeDamage(double amount);
 
