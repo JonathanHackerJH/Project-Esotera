@@ -59,6 +59,7 @@ void GameObject::update() { }
 void GameObject::collide(GameObject*) { }
 void GameObject::takeDamage(double) { }
 double GameObject::health() const { return 0.0; }
+double GameObject::armor() const {return 0.0; }
 
 // GameObject Getters/Setters.
 QString GameObject::name() const
@@ -135,6 +136,27 @@ void Wall::collide(GameObject *other)
         qDebug() << "I am a wall. You shall not pass!";
     }
 }
+
+// --------------------------------------------------- Tombstone
+// Constructor for Tombstone class
+Tombstone::Tombstone()
+{
+    _name = "Tombstone";
+    _type = "Tombstone";
+    _symbol = 'T';
+}
+
+void Tombstone::collide(GameObject *other)
+{
+    if (other->type() == "player")
+    {
+        qDebug() << "\"When you look at the dark side, careful you must be.\n"
+                    "For the dark side looks back.\"\n                               -Yoda";
+
+        destroy();
+        map()->destroy(this);
+    }
+}
 // --------------------------------------------------- Entity
 
 // Constructor for Entity class.
@@ -149,6 +171,24 @@ Entity::Entity()
 // Will be destroyed if _health is reduced to zero.
 void Entity::takeDamage(double amount)
 {
+    // If the entity has armor (only player has armor)
+    //Check the armor level and deal damage here first if possible
+    if(_armor != NULL)
+    {
+        // If there is still armor left deal as much damage here as possible
+        if(_armor > 0.0)
+        {
+            _armor -= amount;
+        }
+        // If we destroied all plus more armor
+        // Reset ammount to deal reaminder of damage to _health
+        // Set _armor to 0
+        if(_armor < 0)
+        {
+            amount -= _armor;
+            _armor = 0;
+        }
+    }
     _health -= amount;
     if (_health <= 0.0)
     {
@@ -163,6 +203,10 @@ double Entity::health() const
     return _health;
 }
 
+double Entity::armor() const
+{
+    return _armor;
+}
 // --------------------------------------------------- Enemy
 
 // Constructor for Enemy class.
@@ -198,10 +242,24 @@ void Enemy::destroy()
 Goblin::Goblin()
 {
     _name = "Goblin";
-    _symbol = 'G';
+    _symbol = 'g';
 
     _health = 2.0;
+    _armor = NULL;
     _damage = 1.0;
+}
+
+// --------------------------------------------------- Goblin Boss
+
+// Constructor for GoblinBoss Enemy class.
+GoblinBoss::GoblinBoss()
+{
+    _name = "Goblin Boss";
+    _symbol = 'G';
+
+    _health = 3.0;
+    _armor = NULL;
+    _damage = 2.5;
 }
 
 // --------------------------------------------------- Player
@@ -214,6 +272,7 @@ Player::Player()
     _symbol = 'A';
 
     _health = 10.0;
+    _armor = 1.0;
     _damage = 1.0;
 }
 

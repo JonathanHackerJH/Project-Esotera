@@ -35,6 +35,7 @@ public:
 
     // Virtual Getters/Setters.
     virtual double health() const;
+    virtual double armor() const;
 
 protected:
     // Basic Variable Members.
@@ -70,6 +71,14 @@ public:
     virtual void collide(GameObject *other);
 };
 
+// Class declaration for tombstone
+class Tombstone : public GameObject
+{
+public:
+    Tombstone();
+    virtual void collide(GameObject *other);
+};
+
 // Parent class for all Entities. This class should not be intantiated.
 // This includes any GameObject which has health and should take damage.
 class Entity : public GameObject
@@ -77,10 +86,13 @@ class Entity : public GameObject
 public:
     Entity();
     double health() const;
+    double armor() const;
+
     virtual void takeDamage(double amount);
 
 protected:
     double _health;
+    double _armor;
 };
 
 // Parent class for all Enemies. The class should not be instantiated.
@@ -103,6 +115,13 @@ class Goblin : public Enemy //Number One
 {
 public:
     Goblin();
+};
+
+// Class declaration for Goblin Boss
+class GoblinBoss : public Enemy
+{
+public:
+    GoblinBoss();
 };
 
 // Class declaration for Player.
