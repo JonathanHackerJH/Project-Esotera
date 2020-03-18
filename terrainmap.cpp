@@ -38,6 +38,9 @@ void testTerrainMap()
     testMap.scatter('.', 'G', 1.0);
     qDebug().noquote() << testMap.show();
 
+    testMap.scatter('.', 'H', 1.0);
+    qDebug().noquote() << testMap.show();
+
     GameMap finalMap = testMap.intantiate();
     qDebug().noquote() << finalMap.print();
 }
@@ -62,6 +65,7 @@ GameMap makeLevel(unsigned int const width, unsigned int const height)
 
     newMap.scatter('.', 't', 1.0);
     newMap.scatter('.', 'G', 1.0);
+    newMap.scatter('.', 'H', 1.0);
 
     return newMap.intantiate();
 }
@@ -100,6 +104,10 @@ GameMap TerrainMap::intantiate()
 
         case 'G':
             newMap.create<GoblinBoss>(xx, yy);
+            break;
+
+        case 'H':
+            newMap.create<HealthPotion>(xx, yy);
             break;
         }
 
