@@ -100,6 +100,24 @@ QString GameMap::print()
     return text;
 }
 
+/*QPixmap GameMap::show()
+{
+    QPixmap _pixmap;
+    GameObject* temp;
+    for (unsigned int yy = 0; yy < _height; yy++)
+    {
+        for (unsigned int xx = 0; xx < _width; xx++)
+        {
+            temp = at(xx, yy);
+            if (temp != nullptr)
+            {
+
+            }
+        }
+    }
+
+}*/
+
 // Public Method -- Executes the update event on all GameObjects.
 void GameMap::update()
 {
