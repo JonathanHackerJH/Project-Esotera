@@ -1,6 +1,15 @@
 #include "terrainmap.h"
 #include "rand_functions.h"
+#include "gamemap.h"
+#include "gameobject.h"
 #include "qdebug.h"
+
+// Use just testTerrainMap() to produce neat qDebug outputs
+// demonstrating the procedural terrain generation.
+
+// Example final code for generating a new GameMap:
+// GameMap finalMap = makeLevel(30, 15);
+// qDebug().noquote() << finalMap.print();
 
 // Public Function -- Creates a test TerrainMap and outputs the results.
 // Basically unit test for TerrainMap.
@@ -17,8 +26,87 @@ void testTerrainMap()
         qDebug().noquote() << testMap.show();
     }
 
-    testMap.scatter('.', 'G', 2.5);
+    testMap.scatter('.', 'g', 2.5);
     qDebug().noquote() << testMap.show();
+
+    testMap.scatter('.', '^', 5.0);
+    qDebug().noquote() << testMap.show();
+
+    testMap.scatter('.', 't', 1.0);
+    qDebug().noquote() << testMap.show();
+
+    testMap.scatter('.', 'G', 1.0);
+    qDebug().noquote() << testMap.show();
+
+    GameMap finalMap = testMap.intantiate();
+    qDebug().noquote() << finalMap.print();
+}
+
+// Public Function -- Makes a level for the game. Returns new TerrainMap.
+GameMap makeLevel(unsigned int const width, unsigned int const height)
+{
+    // Initialize base new TerrainMap.
+    TerrainMap newMap = TerrainMap(width, height);
+    newMap.fill('.');
+    newMap.scatter('.', 'X', 35.0);
+
+    // Execute iterations of cellular automata.
+    for (unsigned int i = 0; i < 4; i++)
+    {
+        newMap.automata('X', '.');
+    }
+
+    // Place some other objects.
+    newMap.scatter('.', 'g', 2.5);
+    newMap.scatter('.', '^', 5.0);
+
+    newMap.scatter('.', 't', 1.0);
+    newMap.scatter('.', 'G', 1.0);
+
+    return newMap.intantiate();
+}
+
+// Public Method -- Converts a TerrainMap into a GameMap.
+// This is a highly specific method. Terrain map stuff must exactly match
+// the characters listed in the switch statement below.
+GameMap TerrainMap::intantiate()
+{
+    GameMap newMap = GameMap(_width, _height);
+
+    // For every character in the TerrainMap...
+    char test;
+    for (unsigned int yy = 0; yy < _height; yy++) {
+    for (unsigned int xx = 0; xx < _width; xx++) {
+        test = at(xx, yy);
+
+        // Create a new corresponding object in the GameMap.
+        switch (test)
+        {
+        case 'X' :
+            newMap.create<Wall>(xx, yy);
+            break;
+
+        case 'g' :
+            newMap.create<Goblin>(xx, yy);
+            break;
+
+        case '^':
+            newMap.create<Spike>(xx, yy);
+            break;
+
+        case 't':
+            newMap.create<Tombstone>(xx, yy);
+            break;
+
+        case 'G':
+            newMap.create<GoblinBoss>(xx, yy);
+            break;
+        }
+
+    } } // End double for loop.
+
+    // Return the new GameMap.
+    return newMap;
 }
 
 // Constructor for TerrainMap class.

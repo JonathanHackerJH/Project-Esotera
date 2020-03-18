@@ -8,8 +8,8 @@
 // most methods. Do not use as a regular value in the TerrainMap EVER.
 // This character represents the keyword ALL.
 
-// Test output for TerrainMap class.
-void testTerrainMap();
+// GameMap forward declaration.
+class GameMap;
 
 class TerrainMap
 {
@@ -26,11 +26,17 @@ public:
     void scatter(const char replace, const char value, const double chance);
     void automata(const char valueA, const char valueD);
 
+    GameMap intantiate();
+
 private:
     unsigned int _width;
     unsigned int _height;
 
     std::vector<char> _mapList;
 };
+
+// Other relevant functions.
+void testTerrainMap();
+GameMap makeLevel(unsigned int const width, unsigned int const height);
 
 #endif // TERRAINMAP_H
