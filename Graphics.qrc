@@ -1,0 +1,18 @@
+<RCC>
+    <qresource prefix="/">
+        <file>pngs/floorTile.png</file>
+        <file>pngs/playerFront.png</file>
+        <file>pngs/playerBack.png</file>
+        <file>pngs/knight.png</file>
+        <file>pngs/lantern.png</file>
+        <file>pngs/damage.png</file>
+        <file>pngs/fire.png</file>
+        <file>pngs/health.png</file>
+        <file>pngs/potion.png</file>
+        <file>pngs/shield.png</file>
+        <file>pngs/spike.png</file>
+        <file>pngs/stairs.png</file>
+        <file>pngs/knight2.png</file>
+        <file>pngs/brickWall.png</file>
+    </qresource>
+</RCC>

@@ -2,6 +2,7 @@
 #define GAMEOBJECT_H
 
 #include <QString>
+#include <QPixmap>
 
 // Forward declaration of GameMap.
 class GameMap;
@@ -29,6 +30,7 @@ public:
     QString name() const;
     QString type() const;
     char symbol() const;
+    QPixmap graphic() const;
     unsigned int x() const;
     unsigned int y() const;
     GameMap* map() const;
@@ -43,9 +45,11 @@ protected:
     QString _name;
     QString _type;
     char _symbol;
+    QPixmap _graphic;
     unsigned int _x;
     unsigned int _y;
     GameMap* _map;
+    QPixmap * _pixmap;
 
     bool _persistent;
 

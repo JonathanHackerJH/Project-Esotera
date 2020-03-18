@@ -7,6 +7,7 @@ GameObject::GameObject()
     _name = "Undefined GameObject";
     _type = "undefined";
     _symbol = '!';
+    _graphic.load (":/pngs/floorTile.png");
 }
 GameObject::~GameObject() { }
 
@@ -75,6 +76,12 @@ char GameObject::symbol() const
 {
     return _symbol;
 }
+
+QPixmap GameObject::graphic() const
+{
+    return _graphic;
+}
+
 unsigned int GameObject::x() const
 {
     return _x;
@@ -96,6 +103,7 @@ Spike::Spike()
     _name = "Hidden Spike";
     _type = "spike_trap";
     _symbol = '^';
+    _graphic.load (":/pngs/spike.png");
 
     _damage = 1.0;
 }
@@ -128,6 +136,7 @@ Wall::Wall()
     _name = "Wall";
     _type = "Wall";
     _symbol = '|';
+    _graphic.load (":/pngs/brickWall.png");
 }
 
 void Wall::collide(GameObject *other)
@@ -145,6 +154,7 @@ Tombstone::Tombstone()
     _name = "Tombstone";
     _type = "Tombstone";
     _symbol = 'T';
+    _graphic.load (":/pngs/brickWall.png");
 }
 
 void Tombstone::collide(GameObject *other)
@@ -166,6 +176,7 @@ HealthPotion::HealthPotion()
     _name = "HealthPotion";
     _type = "HealthPotion";
     _symbol = 'H';
+    _graphic.load (":/pngs/potion.png");
 }
 
 void HealthPotion::collide(GameObject *other)
@@ -268,8 +279,9 @@ void Enemy::destroy()
 // Constructor for Goblin Enemy class.
 Goblin::Goblin()
 {
-    _name = "Goblin";
+    _name = "Knight";
     _symbol = 'g';
+    _graphic.load (":/pngs/knight.png");
 
     _health = 2.0;
     _armor = NULL;
@@ -281,8 +293,9 @@ Goblin::Goblin()
 // Constructor for GoblinBoss Enemy class.
 GoblinBoss::GoblinBoss()
 {
-    _name = "Goblin Boss";
+    _name = "Dark Knight";
     _symbol = 'G';
+    _graphic.load (":/pngs/knight2.png");
 
     _health = 3.0;
     _armor = NULL;
@@ -297,6 +310,7 @@ Player::Player()
     _name = "Player";
     _type = "player";
     _symbol = 'A';
+    _graphic.load (":/pngs/playerFront.png");
 
     _health = 10.0;
     _armor = 1.0;

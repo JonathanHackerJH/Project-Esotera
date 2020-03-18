@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <QString>
+#include <QPixmap>
 #include "gameobject.h"
 #include "qdebug.h"
 
@@ -23,6 +24,7 @@ public:
 
     // Other methods of GameMap.
     QString print();
+    QPixmap show();
     void update();
     void clear();
 
