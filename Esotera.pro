@@ -20,13 +20,15 @@ SOURCES += \
     gameobject.cpp \
     main.cpp \
     mainwindow.cpp \
-    rand_functions.cpp
+    rand_functions.cpp \
+    unitTest.cpp
 
 HEADERS += \
     gamemap.h \
     gameobject.h \
     mainwindow.h \
-    rand_functions.h
+    rand_functions.h \
+    unitTest.h
 
 FORMS += \
     mainwindow.ui

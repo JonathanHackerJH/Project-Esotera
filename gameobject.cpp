@@ -59,7 +59,8 @@ void GameObject::update() { }
 void GameObject::collide(GameObject*) { }
 void GameObject::takeDamage(double) { }
 double GameObject::health() const { return 0.0; }
-double GameObject::armor() const {return 0.0; }
+double GameObject::armor() const { return 0.0; }
+void GameObject::healthBuff(int) {}
 
 // GameObject Getters/Setters.
 QString GameObject::name() const
@@ -157,6 +158,27 @@ void Tombstone::collide(GameObject *other)
         map()->destroy(this);
     }
 }
+
+// --------------------------------------------------- HealthPotion
+// Constructor for HealthPotion class
+HealthPotion::HealthPotion()
+{
+    _name = "HealthPotion";
+    _type = "HealthPotion";
+    _symbol = 'H';
+}
+
+void HealthPotion::collide(GameObject *other)
+{
+    if (other->type() == "player")
+    {
+        qDebug() << "You landed on a health potion! +1 HP";
+
+        other->healthBuff(1);
+        destroy();
+        map()->destroy(this);
+    }
+}
 // --------------------------------------------------- Entity
 
 // Constructor for Entity class.
@@ -206,6 +228,11 @@ double Entity::health() const
 double Entity::armor() const
 {
     return _armor;
+}
+
+void Entity::healthBuff(int x)
+{
+    _health += x;
 }
 // --------------------------------------------------- Enemy
 
