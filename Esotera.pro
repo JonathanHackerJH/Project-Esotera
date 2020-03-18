@@ -21,6 +21,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     rand_functions.cpp \
+    terrainmap.cpp \
     unitTest.cpp
 
 HEADERS += \
@@ -28,6 +29,7 @@ HEADERS += \
     gameobject.h \
     mainwindow.h \
     rand_functions.h \
+    terrainmap.h \
     unitTest.h
 
 FORMS += \
