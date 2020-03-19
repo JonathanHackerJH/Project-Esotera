@@ -3,6 +3,7 @@
 #include "rand_functions.h"
 
 #include "gamemap.h"
+#include "gameobject.h"
 #include "qdebug.h"
 #include "terrainmap.h"
 #include <unitTest.cpp>
@@ -20,14 +21,11 @@ MainWindow::MainWindow(QWidget *parent)
     QPixmap shieldIcon(":/pngs/shield.png");
     ui->shieldIcon->setPixmap(shieldIcon);
 
-   // QString textOutput = print();
-   // ui->playableArea->setText(textOutput);
-
     //Call this if you want to run unit test, otherwise remove this line
  //   unitTest();
     GameMap mainMap = makeLevel(15, 15);
     getGraphic(mainMap);
-
+    setStats();
 }
 
 
@@ -37,6 +35,15 @@ void MainWindow::getGraphic(GameMap map)
     QString text = map.print();
 
     ui->playableArea->setText(text);
+
+}
+
+void MainWindow::setStats()
+{
+    ui->healthLabel->setNum(10.0);
+    ui->shieldLabel->setNum(1.0);
+    ui->damageLabel->setNum(1.0);
+
 
 }
 

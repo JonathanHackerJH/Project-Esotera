@@ -17,7 +17,7 @@ class MainWindow : public QMainWindow
     QPixmap WallSprite = QPixmap(":/pngs/brickWall.png");
     QPixmap FireSprite = QPixmap(":/pngs/fire.png");
     QPixmap FloorSprite = QPixmap(":/pngs/floorTile.png");
-    QPixmap LanternSprite = QPixmap(":/pngs/lanter.png");
+    QPixmap LanternSprite = QPixmap(":/pngs/lantern.png");
     QPixmap PlayerSprite = QPixmap(":/pngs/playerFront.png");
     QPixmap PotionSprite = QPixmap(":/pngs/potion.png");
     QPixmap SpikeSprite = QPixmap(":/pngs/spike.png");
@@ -26,6 +26,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     void getGraphic(GameMap map);
+    void setStats();
     ~MainWindow();
 
 

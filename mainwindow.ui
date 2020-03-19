@@ -138,6 +138,11 @@
       <height>351</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Andale Mono</family>
+     </font>
+    </property>
     <property name="text">
      <string/>
     </property>
