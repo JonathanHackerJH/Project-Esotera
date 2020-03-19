@@ -4,6 +4,7 @@
 
 #include "gamemap.h"
 #include "qdebug.h"
+#include "terrainmap.h"
 #include <unitTest.cpp>
 
 MainWindow::MainWindow(QWidget *parent)
@@ -19,11 +20,24 @@ MainWindow::MainWindow(QWidget *parent)
     QPixmap shieldIcon(":/pngs/shield.png");
     ui->shieldIcon->setPixmap(shieldIcon);
 
-    //QString textOutput = print();
+   // QString textOutput = print();
    // ui->playableArea->setText(textOutput);
 
     //Call this if you want to run unit test, otherwise remove this line
-    unitTest();
+ //   unitTest();
+    GameMap mainMap = makeLevel(15, 15);
+    getGraphic(mainMap);
+
+}
+
+
+void MainWindow::getGraphic(GameMap map)
+{
+
+    QString text = map.print();
+
+    ui->playableArea->setText(text);
+
 }
 
 MainWindow::~MainWindow()
