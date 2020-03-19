@@ -1,5 +1,7 @@
 #include "gamemap.h"
 #include "gameobject.h"
+#include "mainwindow.h"
+#include <QLabel>
 
 // Constructor for GameMap class.
 // Takes width/height parameters.
@@ -97,10 +99,14 @@ QString GameMap::print()
         }
         text += "]\n";
     }
+
     return text;
+
 }
 
-/*QPixmap GameMap::show()
+
+
+/*void GameMap::show()
 {
     QPixmap _pixmap;
     GameObject* temp;
@@ -111,13 +117,31 @@ QString GameMap::print()
             temp = at(xx, yy);
             if (temp != nullptr)
             {
-
+              //  _pixmap.at(temp) == Player(graphic);
             }
-        }
+
+            QVector< QVector< QPixmap > > pixmap_array;
+            pixmap_array.resize(10);
+
+            for (int i = 0; i < pixmap_array.size(); i++)
+            {
+                pixmap_array[i].resize(10);
+            }
+
+            pixmap_array[0][0] = QPixmap("knight.png");
+          //  pixmap_array[0][1] = QPixmap(...);
+           // pixmap_array[9][9] = QPixmap(...);
+
+
+            //        if (type().at(temp) == "player")
+
+  }
     }
 
-}*/
 
+
+}
+*/
 // Public Method -- Executes the update event on all GameObjects.
 void GameMap::update()
 {

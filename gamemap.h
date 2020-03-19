@@ -24,7 +24,7 @@ public:
 
     // Other methods of GameMap.
     QString print();
-    QPixmap show();
+    void show();
     void update();
     void clear();
 

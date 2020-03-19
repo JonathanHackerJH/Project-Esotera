@@ -12,6 +12,16 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    QPixmap healthIcon(":/pngs/health.png");
+    ui->healthIcon->setPixmap(healthIcon);
+    QPixmap damageIcon(":/pngs/damage.png");
+    ui->damageIcon->setPixmap(damageIcon);
+    QPixmap shieldIcon(":/pngs/shield.png");
+    ui->shieldIcon->setPixmap(shieldIcon);
+
+    //QString textOutput = print();
+   // ui->playableArea->setText(textOutput);
+
     //Call this if you want to run unit test, otherwise remove this line
     unitTest();
 }
